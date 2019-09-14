@@ -1,0 +1,15 @@
+package com.xueqing.demo.springbootsecurity.mapper;
+
+import com.xueqing.demo.springbootsecurity.bean.Book;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
+
+@Mapper
+public interface BookMapper {
+
+
+    @Select("select * from t_brand")
+    List<Book> list();
+}

@@ -1,0 +1,7 @@
+<frameset rows="8%,*">
+    <frame src="header.html">
+    <frameset cols="20%,*">
+        <frame src="left.html" noresize="noresize">
+        <frame src="list.html" name="right">
+    </frameset>
+</frameset>

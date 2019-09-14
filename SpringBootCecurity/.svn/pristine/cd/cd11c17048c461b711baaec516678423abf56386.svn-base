@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="angularjs/angular-animate.min.js"></script>
+    <script type="text/javascript" src="angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="angularjs/angular-route.min.js"></script>
+
+    <link rel="stylesheet" href="css/likeit.css"/>
+
+
+
+</head>
+
+
+
+<body>
+<body ng-app="myapp" ng-controller="mycontroller" ng-init="search()">
+
+    <table>
+
+        <tr>
+            <td>品牌编号</td>
+            <td>
+                <input ng-model="entity.brand_id">
+            </td>
+
+        </tr>
+        <tr>
+            <td>随机编号</td>
+            <td>
+                <input  ng-model="entity.productionunit_id">
+            </td>
+
+
+        </tr>
+        <tr>
+            <td>品牌名称</td>
+            <td>
+                <input  ng-model="entity.brand_name">
+            </td>
+
+        </tr>
+        <tr>
+            <td>评价</td>
+            <td>
+                <input  ng-model="entity.brand_describe">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="55">
+
+                <button ng-click="search()"> 添加</button>
+
+            </td>
+        </tr>
+    </table>
+
+  <!-- <table>
+
+       <tr>
+           <td>品牌编号</td>
+           <td>
+               <input type="text" name="brand_id">
+           </td>
+
+       </tr>
+       <tr>
+           <td>随机编号</td>
+           <td>
+               <input type="text" name="productionunit_id">
+           </td>
+
+
+       </tr>
+       <tr>
+           <td>品牌名称</td>
+           <td>
+               <input type="text" name="brand_name">
+           </td>
+
+       </tr>
+       <tr>
+           <td>评价</td>
+           <td>
+               <input type="text" name="brand_describe">
+           </td>
+       </tr>
+       <tr>
+           <td colspan="55">
+
+                 <button ng-click="search()"> 添加</button>
+
+           </td>
+       </tr>
+   </table>-->
+
+
+
+   <script>
+    //建立模块
+    var app=angular.module("myapp",[]);
+    //创建控制器(两个参数)
+    app.controller("mycontroller",function($scope,$http) {
+        $scope.search=function () {
+            alert(JSON.stringify($scope.entity));
+            $http.post("add.do",$scope.entity).success(
+
+                function (response) {
+                    console.log(response);
+                    $scope.list=response;
+                }
+            )
+        }
+    });
+
+
+
+</script>
+</body>
+</html>

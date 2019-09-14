@@ -1,0 +1,31 @@
+package com.xueqing.demo.springbootsecurity.controller;
+
+import com.xueqing.demo.springbootsecurity.bean.Book;
+import com.xueqing.demo.springbootsecurity.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@Controller
+public class BookController {
+
+    @Autowired
+    private BookService bookService;
+
+    //查询电梯品牌
+    @RequestMapping("/list.do")
+    @ResponseBody
+    public List<Book> list(){
+
+        List<Book>list=bookService.list();
+
+        return list;
+    }
+
+
+
+}

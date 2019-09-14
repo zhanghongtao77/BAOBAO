@@ -1,0 +1,112 @@
+
+<!DOCTYPE HTML>
+<html>
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Highcharts Example</title>
+
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="angularjs/angular-animate.min.js"></script>
+    <script type="text/javascript" src="angularjs/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
+    <script type="text/javascript" src="js/exporting.js"></script>
+    <style type="text/css">
+
+        ${demo.css}
+    </style>
+
+    <link rel="stylesheet" href="css/likeit.css"/>
+
+
+</head>
+<body   ng-app="myapp" ng-controller="mycontroller" ng-init="findsheAll()">
+
+<div id="container" style="min-width: 600px; height: 400px; max-width: 600px; white-space: nowrap;margin: 0 auto"></div>
+<div style="min-width: 400px; height: 500px; max-width: 600px;margin: 0 auto">
+    <table>
+        <tr>
+            <td>安全品牌</td>
+            <td>总数量</td>
+        </tr>
+        <tr ng-repeat="entity in listw">
+            <td>{{entity.name}}</td>
+            <td>{{entity.y}}</td>
+        </tr>
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $.get(
+            "queryDataBase",
+            function (data) {
+                console.log(data)
+                var count=0;
+                for(var i of data){
+                    count =count+i.y;
+                }
+                for(var item of data){
+                    item.y = item.y /count*100;
+                }
+                bt(data);
+            }, "json"
+        )
+    });
+    var chart;
+    function bt(database) {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: '所有品牌统计'
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: database
+            }]
+        });
+    };
+
+    //建立模块
+    var app=angular.module("myapp",[]);
+    //创建控制器(两个参数)
+    app.controller("mycontroller",function($scope,$http) {
+        $scope.findsheAll=function () {
+            $http.get("queryDataBase").success(
+                function (response) {
+                    console.log(response);
+                    $scope.listw=response;
+
+                }
+            )
+        }
+    });
+    </script>
+</body>
+</html>

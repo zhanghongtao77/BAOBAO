@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="css/likeit.css"/>
+
+
+
+<script src="angularjs/angular.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body  bgcolor="white" style="color: #0f0f0f" ng-app="pinglun" ng-controller="ActionController" ng-init="find()">
+
+<table>
+    <tr>
+        <td colspan="10">
+            <h1>电梯气瓶安全管理</h1>
+        </td>
+    </tr>
+
+</table>
+<table  border="10">
+    <tr>
+        <td style="color: #001a35"><b>以下为评论内容</b></td>
+    </tr>
+
+    <tr ng-repeat="entity in list" >
+
+        <td >{{entity.neirong}}</td>
+    </tr>
+
+</table>
+
+        <table>
+            <tr>
+
+                    <tr>
+                            <td style="width: 200px"><b>电梯使用须知</b></td>
+                            <td>
+                                1. 电梯内应张贴“电梯使用须知”，以便使用人员了解电梯常识。
+                                2. 电梯通道及机房门口严禁堆积杂物，道路应保持整洁畅通。
+                                3. 电梯无论处于任何工况任何一层厅门、轿厢门必须开关正常，任何一层厅门、轿厢门未关好电梯均不会启动。严禁将门接点短路。
+                                4. 电梯发生故障时，使用单位及个人必须立即联系电气车间电检班，严禁私自处理，更不允许出现撬门、砸锁等严重违章行为。
+                                5. 电梯内的各种安全保护装置，如发现磨损、失效影响安全时，必须及时处理，未消除缺陷的电梯应停止使用，严禁擅自解除安全保护装置。
+                                6. 任何情况下人员身体不得依靠在厅门、轿厢门上，严禁在厅门、桥厢门处停留。更不允许在轿厢门、厅门开启情况下，揿应急铵钮开动电梯。
+                                7. 使用电梯时不准出现野蛮操作行为，避免电梯内的功能按钮等部件损坏。
+                                8. 正常情况下载人的客梯严禁运载货物，更不允许超载使用。特殊情况下因生产需要必须使用客梯运货时，必须经过厂部安监科同意，同时到电检班履行联系、交底手续，办理电梯使用联系单，采取防护措施。
+                                9. 运载货物时应均匀将运载货物放入轿厢底板平台上，保持电梯承重平衡。电梯需装载氧气或乙炔瓶时，必须将气瓶隔绝门关严，不得漏气，且必须氧气、乙炔瓶分开运送。
+                                10. 无论何时何种情况下，使用电梯的人员必须爱护电梯，保证电梯完好。
+                                11. 外施工队使用电梯，也要严格执行以上规定，使用货梯执行电梯使用联系单。
+                            </td>
+                            <td>
+                                <input type="button" value="顶">
+                                <input type="button" value="踩">
+                            </td>
+                    </tr>
+
+
+
+                <tr>
+                    <td style="width: 200px"><b>电梯使用须知</b></td>
+                    <td>
+                        特种设备是指涉及生命安全、危险性较大的锅炉、压力容器(含气瓶)、压力管道、电梯、起重机械、客运索道、大型游乐设施和场(厂)内专用机动车辆这八大类设备。
+                        为保障特种设备的安全运行，国家对各类特种设备，从生产、使用、检验检测三个环节都有严格规定，实行的是全过程的监督。
+                        据《2013-2017年中国特种设备检验检测行业市场前瞻与投资战略规划分析报告》统计，截至2011年底，
+                        全国特种设备综合性检验机构已达到545家，包括质检部门所属检验机构、行业检验机构及企业自检机构，
+                        另外还有型式试验机构、无损检测机构、气瓶检验机构等。
+                        但是，我国特种设备检验检测机构仍存在较多问题。
+                        如：检验资源未能有效配置，检验机构规模小，抗风险能力弱;基础设施亟待改善，技术装备不足，检测仪器陈旧，
+                        高新检测装备与技术匮乏;检验机构人员结构不合理，缺乏高素质管理与技术人才;检验机构尚未真正建立起自我约束、激励、发展机制等。
+                        因此，未来我国需进一步积极稳妥地推进检验机构的改革创新，通过调整特种设备检验机构核准条件，推进检验机构走联合重组、规模化发展的道路。
+                        另外，随着无损检测技术在特种设备检测中应用的日益成熟，越来越多的第三方无损检测机构进入到特种设备检测领域，致使竞争日趋激烈了。
+                    </td>
+                    <td>
+                        <input type="button" value="顶">
+                        <input type="button" value="踩">
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td>请输入评论内容</td>
+                        <td>
+                                <!--<textarea name="neirong">
+                                </textarea>-->
+                            <div class="test"></div>
+
+                        </td>
+                        <td>
+                            <input type="text" id="test"/>
+                            <input type='button' value='发送' onclick="fun()"/>
+                        </td>
+                    </tr>
+
+            </tr>
+
+
+        </table>
+
+
+
+
+</table>
+
+
+</body>
+</html>
+
+<script>
+    //评论
+    var app=angular.module("pinglun",[]);
+    app.controller('ActionController',function($scope,$http){
+        //查找数据
+        $scope.find=function () {
+            $http.get('contenr.do').success(
+                function (response){
+                    $scope.list=response;
+
+                }
+            )
+        }
+    })
+
+
+    function fun(){
+
+        var str = document.getElementById("test").value;
+
+        var divs = document.getElementsByTagName("div");
+
+        for(i=0;i<divs.length;i++){
+
+            if(divs[i].className == "test"){
+
+                divs[i].innerHTML += "" +str;
+
+            }
+
+        }}
+</script>

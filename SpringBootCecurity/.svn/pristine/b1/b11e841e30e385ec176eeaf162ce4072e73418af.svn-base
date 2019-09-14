@@ -1,0 +1,63 @@
+package com.xueqing.demo.springbootsecurity.controller;
+
+import com.xueqing.demo.springbootsecurity.bean.Book;
+import com.xueqing.demo.springbootsecurity.bean.T_installunit;
+import com.xueqing.demo.springbootsecurity.bean.T_useunit;
+import com.xueqing.demo.springbootsecurity.service.BookService;
+import com.xueqing.demo.springbootsecurity.util.PageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@Controller
+public class BookController {
+
+    @Autowired
+    private BookService bookService;
+
+    //查询电梯品牌
+    @RequestMapping("/list.do")
+    @ResponseBody
+    public List<Book> list(String page,String mohu,HttpServletRequest request){
+        if(mohu==null){
+            mohu="";
+        }
+        List<Book>list=bookService.list();
+        return list;
+    }
+
+    @RequestMapping("/add.do")
+    @ResponseBody
+    public void add(@RequestBody Book book){
+        System.err.println(book);
+        bookService.add(book);
+
+    }
+
+    //查询安装单位
+    @RequestMapping("/unit.do")
+    @ResponseBody
+    public List<T_installunit> unit(){
+
+        List<T_installunit>unit=bookService.unit();
+        return unit;
+    }
+
+    //查询正在使用的单位
+    @RequestMapping("/useunit.do")
+    @ResponseBody
+    public List<T_useunit> useunit(){
+
+        List<T_useunit>useunit=bookService.useunit();
+        return useunit;
+    }
+
+
+
+
+}
