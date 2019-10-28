@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql:///idea?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 自动创建表语句,第一次需要使用
+    #schema: classpath:department.sql
+    #data: classpath:employee.sql
+    #initialization-mode: always
+
